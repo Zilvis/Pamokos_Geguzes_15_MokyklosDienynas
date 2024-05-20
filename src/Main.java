@@ -15,8 +15,10 @@ public class Main {
         school.addStudent(s2);
         school.addStudent(s3);
 
-        school.getStudentuSarasas();
+        //school.getStudentuSarasas();
 
-        school.calculateAverage("Ona");
+        //school.calculateAverage("Ona");
+
+        school.printStudentGrades("Ona");
     }
 }

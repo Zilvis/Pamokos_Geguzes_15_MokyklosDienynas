@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Optional;
 
 public class School {
     private Student[] studentuSarasas = new Student[1];
@@ -33,6 +34,10 @@ public class School {
         return 0;
     }
 
+    public Student[] gautiStudentuSarasa(){
+        return studentuSarasas;
+    }
+
     public void getStudentuSarasas() {
         for (Student s : studentuSarasas){
             System.out.println(s);
@@ -40,12 +45,21 @@ public class School {
     }
 
     /**
-     * spausdina visus mokinio pažymius.
+     * Atspauzdina mokinio pazymius pagal varda
      *
-     * @param name
+     * @param name - Perduodamas mokinio vardas
      */
     public void printStudentGrades(String name) {
+        Optional<Student> optionalStudent = Arrays.stream(gautiStudentuSarasa())
+                .filter(Student -> Student.getName().equalsIgnoreCase(name))
+                .findFirst();
 
+        if (optionalStudent.isPresent()){
+            Student student = optionalStudent.get();
+            System.out.println(student.getName() + " " + Arrays.toString(student.getGrades()));
+        } else {
+            System.err.println(name + " nerasta!");
+        }
     }
 
     /**
